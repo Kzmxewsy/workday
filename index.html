@@ -9,6 +9,7 @@
 
 	<!-- local -->
 	<link rel="stylesheet" href="source/bootstrap.min.css">
+	<link rel="stylesheet" href="source/app.min.css">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
 	<div class="container-fluid">
 		<h1><small>Working Day.</small></h1>
 
-		<div id="app" class="form-inline">
+		<div id="app" class="form-inline" v-cloak>
 			<div v-if="seen" class="alert alert-warning">
 				<strong>请输入整数</strong>
 			</div>
@@ -29,55 +30,10 @@
 			</ol>
 			<button v-on:click="gettime" class="btn btn-primary">获取</button>
 		</div>
-
 	</div>
 
 	<script src="source/vue.min.js"></script>
-	<script>
-		var app = new Vue({
-			el: '#app',
-			data: {
-				hour: 0,
-				minute: 0,
-				standard: 7.25,
-				result_d: 0,
-				result_h: 0,
-				result_m: 0,
-				seen: false,
-			},
-			methods: {
-				gettime: function () {
-					var m1 = Math.floor(this.hour*60),
-						m2 = Math.floor(this.minute),
-						days = (m1 + m2)/(this.standard*60),
-						diff_minutes;
-
-					var check_status = this.checkdata();
-
-					if (!check_status) {
-						return false;
-					}
-
-					this.result_d = Math.floor(days);
-					diff_minutes = (m1+m2) - (this.result_d*this.standard*60);
-					this.result_h = Math.floor(diff_minutes/60);
-					this.result_m = Math.floor(diff_minutes%60);
-				},
-				checkdata:function(){
-					if (parseInt(this.hour) != parseFloat(this.hour) || parseInt(this.minute) != parseFloat(this.minute)) {
-						this.result_d = 0;
-						this.result_h = 0;
-						this.result_m = 0;
-						this.seen = true;
-						return false;
-					}
-					this.seen = false;
-					return true;
-				}
-				
-			}
-		})    
-	</script>
+	<script src="source/app.min.js"></script>
 
 </body>
 </html>
