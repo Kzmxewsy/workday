@@ -32,14 +32,26 @@
             <li><a href="javascript:;">{{ result_m }} 分钟</a></li>
         </ol>
         <button v-on:click="gettime" class="btn btn-primary">获取</button>
+        <button v-on:click="clearhistory" class="btn btn-default">清空</button>
         <div class="info">
             <h3>
                 <small>History</small>
             </h3>
             <hr>
-            <div class="alert alert-info" role="alert"  v-for="text in history">{{ text }}</div>
+
+            <div class="panel panel-primary eye-protector-processed" style="transition: background-color 0.3s
+                ease 0s; background-color: rgb(255, 255, 255);" v-for="item in history">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ item.input }}</h3>
+                </div>
+                <div class="panel-body">
+                    {{ item.text }}
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 </div>
 
 <script src="source/vue.min.js"></script>
