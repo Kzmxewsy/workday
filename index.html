@@ -27,6 +27,7 @@
         <input type="number" v-model="hour" class="form-control" @blur="checkdata" @keyup.enter="gettime"> 小时
         <input type="number" v-model="minute" class="form-control" @blur="checkdata" @keyup.enter="gettime"> 分钟
         <ol class="breadcrumb" style="margin-top: 20px;">
+            <li><a href="javascript:;">当前：</a></li>
             <li><a href="javascript:;">{{ result_d }} 天</a></li>
             <li><a href="javascript:;">{{ result_h }} 小时</a></li>
             <li><a href="javascript:;">{{ result_m }} 分钟</a></li>
@@ -35,8 +36,14 @@
         <button v-on:click="clearhistory" class="btn btn-default">清空</button>
         <div class="info">
             <h3>
-                <small>History</small>
+                <small>History <span class="badge" style="background-color: steelblue" v-text="count"></span></small>
             </h3>
+            <ol class="breadcrumb" style="margin-top: 20px;">
+                <li><a href="javascript:;">总数：</a></li>
+                <li><a href="javascript:;">{{ result_ds }} 天</a></li>
+                <li><a href="javascript:;">{{ result_hs }} 小时</a></li>
+                <li><a href="javascript:;">{{ result_ms }} 分钟</a></li>
+            </ol>
             <hr>
 
             <div class="panel panel-primary eye-protector-processed" style="transition: background-color 0.3s
